@@ -1,4 +1,3 @@
- <script>
              alert("Why hello there! I'm a wee bit of JavaScript.");
               var animatePoints = function() {
  
@@ -31,4 +30,4 @@
  
              };
              animatePoints();
-         </script>
+        
