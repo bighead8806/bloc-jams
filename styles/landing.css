@@ -45,6 +45,10 @@
      -moz-transition-delay: 0.2s;
      transition-delay: 0.2s;
  }
+
+.point:hover {
+    width: 125%;
+}
  
  .point .point-title {
      font-size: 1.25rem;
