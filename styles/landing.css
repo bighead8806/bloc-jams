@@ -40,10 +40,12 @@
      transform: scaleX(0.9) translateY(3rem);
      -webkit-transition: all 0.25s ease-in-out;
      -moz-transition: all 0.25s ease-in-out;
-     transition: all 0.25s ease-in-out;
+     transition: all 0.25s ease-in-out, color 0.2s 0s;
      -webkit-transition-delay: 0.2s;
      -moz-transition-delay: 0.2s;
      transition-delay: 0.2s;
+     color: #c44743
+     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
  }
 
 .point:hover {
