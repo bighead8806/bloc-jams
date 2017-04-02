@@ -29,6 +29,20 @@
      ]
  };
 
+var albumAdamMohrbacher = {
+    title: 'Adams Greatest Hits',
+    artist: 'Adam Mohrbacher'
+    label: 'A Fantastic Label, Believe Me'
+    year: '2050'
+    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title)'
+    songs: [ 
+    {title: 'I like you!', duration:'20:25'},
+    {title: 'I really, really like you', duration:'90:30'},
+    {title: 'I like you too much', duration:'100:00'},
+    {title: 'Seriously, I need help regarding how much I like you!', duration:'30:45'}
+]
+};
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -41,15 +55,14 @@
      return template;
  };
 
-var setCurrentAlbum = function(album) {
-     // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
+   var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
  
-     // #2
+var setCurrentAlbum = function(album) {
+     // #1
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -63,7 +76,16 @@ var setCurrentAlbum = function(album) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
- 
+
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
  };
+     
+var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
+     var image = 0;
+     albumImage.addEventListener("click", swapAlbums){
+     function swapAlbums(){
+         setCurrentAlbum(myAlbums[index]);
+         index++;
+     }
+    };
