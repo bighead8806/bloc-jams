@@ -79,13 +79,17 @@ var setCurrentAlbum = function(album) {
 
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
- };
+ 
      
 var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
-     var image = 0;
+     var image = 1; //changed this based on watching the video
      albumImage.addEventListener("click", swapAlbums){
-     function swapAlbums(){
+     function swapAlbums(){ //This seems like it should work, even though its a little different from the video. Am I wrong?
          setCurrentAlbum(myAlbums[index]);
          index++;
+         if (index == myAlbums.length){
+             index = 0; //added this based on watching the video
+         }
      }
-    };
+    }
+ };
