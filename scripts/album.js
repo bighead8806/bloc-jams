@@ -83,9 +83,7 @@ window.onload = function() {
      setCurrentAlbum(albumPicasso);
      
 songListContainer.addEventListener('mouseover', function(event) {
-         // #1
-    
-     // Album button templates
+        
 var songRows = document.getElementsByClassName('album-view-song-item');
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 
