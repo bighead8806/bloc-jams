@@ -31,10 +31,10 @@
 
 var albumAdamMohrbacher = {
     title: 'Adams Greatest Hits',
-    artist: 'Adam Mohrbacher'
-    label: 'A Fantastic Label, Believe Me'
-    year: '2050'
-    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title)'
+    artist: 'Adam Mohrbacher',
+    label: 'A Fantastic Label, Believe Me',
+    year: '2050',
+    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title)',
     songs: [ 
     {title: 'I like you!', duration:'20:25'},
     {title: 'I really, really like you', duration:'90:30'},
@@ -55,41 +55,35 @@ var albumAdamMohrbacher = {
      return template;
  };
 
-   var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
  
 var setCurrentAlbum = function(album) {
-     // #1
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
  
-     // #3
      albumSongList.innerHTML = '';
  
-     // #4
      for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
 
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
-
-window.onload = function() {
-     setCurrentAlbum(albumPicasso);
-     
-songListContainer.addEventListener('mouseover', function(event) {
-         // #1
-    
-     // Album button templates
+         
 var songRows = document.getElementsByClassName('album-view-song-item');
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
-
-if (event.target.parentElement.className === 'album-view-song-item') {
+    
+window.onload = function() {
+     setCurrentAlbum(albumPicasso);
+    
+songListContainer.addEventListener('mouseover', function(event) {
+    if (event.target.parentElement.className === 'album-view-song-item') {
     event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
     }
     
@@ -112,4 +106,3 @@ var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
          }
       }
     }
- };
