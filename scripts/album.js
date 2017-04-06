@@ -81,19 +81,9 @@ var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></
     
 window.onload = function() {
      setCurrentAlbum(albumPicasso);
-<<<<<<< HEAD
      
 songListContainer.addEventListener('mouseover', function(event) {
-        
-var songRows = document.getElementsByClassName('album-view-song-item');
-var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
-
-if (event.target.parentElement.className === 'album-view-song-item') {
-=======
-    
-songListContainer.addEventListener('mouseover', function(event) {
     if (event.target.parentElement.className === 'album-view-song-item') {
->>>>>>> checkpoint-12-dom-scripting-play/pause-part-1
     event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
     }
     
