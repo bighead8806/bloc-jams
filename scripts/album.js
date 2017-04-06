@@ -68,10 +68,8 @@ var setCurrentAlbum = function(album) {
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
  
-     // #3
      albumSongList.innerHTML = '';
  
-     // #4
      for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
@@ -79,17 +77,17 @@ var setCurrentAlbum = function(album) {
 
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
- 
+
      
 var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
-     var image = 1; //changed this based on watching the video
-     albumImage.addEventListener("click", swapAlbums){
-     function swapAlbums(){ //This seems like it should work, even though its a little different from the video. Am I wrong?
-         setCurrentAlbum(myAlbums[index]);
+
+var index = 1; 
+albumImage.addEventListener("click", function(Event) { 
+var albumImage = document.getElementsByClassName('album-cover-art')[0]; 
+setCurrentAlbum(myAlbums[index]);
          index++;
          if (index == myAlbums.length){
-             index = 0; //added this based on watching the video
+             index = 0;
          }
-     }
-    }
- };
+});
+};
