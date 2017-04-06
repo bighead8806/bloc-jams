@@ -31,10 +31,10 @@
 
 var albumAdamMohrbacher = {
     title: 'Adams Greatest Hits',
-    artist: 'Adam Mohrbacher'
-    label: 'A Fantastic Label, Believe Me'
-    year: '2050'
-    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title)'
+    artist: 'Adam Mohrbacher',
+    label: 'A Fantastic Label, Believe Me',
+    year: '2050',
+    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title).jpg',
     songs: [ 
     {title: 'I like you!', duration:'20:25'},
     {title: 'I really, really like you', duration:'90:30'},
@@ -76,18 +76,20 @@ var setCurrentAlbum = function(album) {
  };
 
  window.onload = function() {
+     var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
      setCurrentAlbum(albumPicasso);
 
-     
-var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
-
 var index = 1; 
+     
 albumImage.addEventListener("click", function(Event) { 
 var albumImage = document.getElementsByClassName('album-cover-art')[0]; 
-setCurrentAlbum(myAlbums[index]);
-         index++;
-         if (index == myAlbums.length){
-             index = 0;
-         }
-});
+
+    index++;
+    if (index == myAlbums.length){
+        index = 0;
+    }
+    
+    setCurrentAlbum(myAlbums[index]);
+
+    });
 };
