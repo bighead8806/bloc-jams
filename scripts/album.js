@@ -34,7 +34,7 @@ var albumAdamMohrbacher = {
     artist: 'Adam Mohrbacher',
     label: 'A Fantastic Label, Believe Me',
     year: '2050',
-    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title)',
+    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title).jpg',
     songs: [ 
     {title: 'I like you!', duration:'20:25'},
     {title: 'I really, really like you', duration:'90:30'},
@@ -80,6 +80,7 @@ var songRows = document.getElementsByClassName('album-view-song-item');
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
     
 window.onload = function() {
+     var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
      setCurrentAlbum(albumPicasso);
      
 songListContainer.addEventListener('mouseover', function(event) {
@@ -95,14 +96,16 @@ for (var i = 0; i < songRows.length; i++) {
     });
 }
      
-var myAlbums = [albumMarconi, albumPicasso, albumAdamMohrbacher];
-     var image = 1; //changed this based on watching the video
-     albumImage.addEventListener("click", swapAlbums);
-     function swapAlbums(){ //This seems like it should work, even though its a little different from the video. Am I wrong?
-         setCurrentAlbum(myAlbums[index]);
-         index++;
+    var index = 1;
+    albumImage.addEventListener("click", function(Event) { 
+    var albumImage = document.getElementsByClassName('album-cover-art')[0]; 
+        
+        index++;
+    
          if (index == myAlbums.length){
              index = 0; //added this based on watching the video
          }
-      }
-    }
+        setCurrentAlbum(myAlbums[index])
+      });
+};
+    
