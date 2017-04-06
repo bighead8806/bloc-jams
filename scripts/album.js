@@ -31,10 +31,10 @@
 
 var albumAdamMohrbacher = {
     title: 'Adams Greatest Hits',
-    artist: 'Adam Mohrbacher'
-    label: 'A Fantastic Label, Believe Me'
-    year: '2050'
-    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title)'
+    artist: 'Adam Mohrbacher',
+    label: 'A Fantastic Label, Believe Me',
+    year: '2050',
+    albumArtUrl:'assets/images/album_covers/Paris_2050_(No_Title)',
     songs: [ 
     {title: 'I like you!', duration:'20:25'},
     {title: 'I really, really like you', duration:'90:30'},
