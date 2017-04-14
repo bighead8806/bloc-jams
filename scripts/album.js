@@ -141,6 +141,18 @@ songListContainer.addEventListener('mouseover', function(event) {
     }   
 });
     
+    //element.addEventListener('click', function() {
+        // Code to be executed when eventname is triggered on element.
+       // clickHandler();
+  //  });
+    
+  //  var clickHandler = function() {
+        // Code to run on click.
+  //      alert('We made a click!');
+  //  };
+    
+   // element.addEventListener('click', clickHandler);
+    
 for (var i = 0; i < songRows.length; i++) {
     songRows[i].addEventListener('mouseleave', function(event) {
     
