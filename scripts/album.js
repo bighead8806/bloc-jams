@@ -167,18 +167,6 @@ for (var i = 0; i < songRows.length; i++) {
     songRows[i].addEventListener('click', function(event) {
          clickHandler(event.target);
          });
-}
-     
-    var index = 1;
-    albumImage.addEventListener("click", function(Event) { 
-    var albumImage = document.getElementsByClassName('album-cover-art')[0]; 
-        
-        index++;
-    
-         if (index == myAlbums.length){
-             index = 0; //added this based on watching the video
-         }
-        setCurrentAlbum(myAlbums[index])
-      });
+    }
 };
     
