@@ -91,7 +91,6 @@ var offHover = function(event) {
     if(songNumber !== currentlyPlayingSongNumber) {
         songNumberCell.html(songNumber);
     }   
-    console.log("songNumber type is " + typeof songNumber + "\n and currentlyPlayingSongNumber type is " + typeof currentlyPlayingSongNumber);
 };
      
 $row.find('.song-item-number').click(clickHandler);
@@ -161,6 +160,12 @@ var setCurrentAlbum = function(album) {
              var offsetX = event.pageX - $seekBar.offset().left;
              var barWidth = $seekBar.width();
              var seekBarFillRatio = offsetX / barWidth;
+             
+             if ($seekBar.parent().attr('class') == 'seek-control') {
+                seek(seekBarFillRatio * currentSoundFile.getDuration());   
+            } else {
+                setVolume(seekBarFillRatio);
+            }
  
              updateSeekPercentage($seekBar, seekBarFillRatio);
          });
