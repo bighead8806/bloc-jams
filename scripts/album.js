@@ -125,12 +125,12 @@ var setCurrentTimeInPlayerBar = function(currentTime) {
     $currentTimeElement.text(currentTime);
 };
 
-var setTotalTimeInPlayerBar(totalTime){
+var setTotalTimeInPlayerBar = function(totalTime){
    var $totalTimeElement = $('.seek-control .total-time');
     $totalTimeElement.text(totalTime);
 };
 
-var filterTimeCode(timeInSeconds){
+var filterTimeCode = function(timeInSeconds){
   var seconds = Number.parseFloat(timeInSeconds);
   var wholeSeconds = Math.floor(seconds);
   var minutes = Math.floor(wholeSeconds / 60);
@@ -264,6 +264,7 @@ var previousSong = function() {
     
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
+    updateSeekBarWhileSongPlays();
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
     $('.currently-playing .song-name').text(currentSongFromAlbum.name);
