@@ -131,7 +131,7 @@ var setTotalTimeInPlayerBar = function(totalTime){
 };
 
 var filterTimeCode = function(timeInSeconds){
-  var seconds = Number.parseFloat(timeInSeconds);
+  var seconds = Math.floor(Number.parseFloat(timeInSeconds));
   var wholeSeconds = Math.floor(seconds);
   var minutes = Math.floor(wholeSeconds / 60);
     
@@ -177,11 +177,14 @@ var filterTimeCode = function(timeInSeconds){
      $seekBars.click(function(event) {
          var offsetX = event.pageX - $(this).offset().left;
          var barWidth = $(this).width();
-         
          var seekBarFillRatio = offsetX / barWidth;
- 
-         updateSeekPercentage($(this), seekBarFillRatio);
-     });
+          if ($seekBar.parent().attr('class') == 'seek-control') {
+                seek(seekBarFillRatio * currentSoundFile.getDuration());   
+            } else {
+                setVolume(seekBarFillRatio);
+            }
+        updateSeekPercentage($(this), seekBarFillRatio);
+});
      
      $seekBars.find('.thumb').mousedown(function(event) {
          var $seekBar = $(this).parent();
@@ -273,8 +276,8 @@ var previousSong = function() {
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
     var lastSongNumber = getLastSongNumber(currentSongIndex);
-    var $previousSongNumberCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
-    var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
+    var $previousSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+    var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
     
     $previousSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);   
@@ -282,7 +285,7 @@ var previousSong = function() {
 
 var togglePlayFromPlayerbar = function(){ 
     var $currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
-    if(currentSoundFile.isPaused()){
+    if(currentSoundFile && currentSoundFile.isPaused()){
         $currentlyPlayingCell.html(pauseButtonTemplate);         
         $(this).html(playerBarPauseButton);         
         currentSoundFile.play();     
@@ -303,7 +306,7 @@ var currentAlbum = null;
 var currentlyPlayingSongNumber = null;
 var currentSongFromAlbum = null;
 var currentSoundFile = null;
-var currentVolume = 75;
+var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
