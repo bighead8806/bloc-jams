@@ -15,7 +15,7 @@ var setSong = function(songNumber) {
 
 var seek = function(time){
     if(currentSoundFile){
-        currentSoundFile.setVolume(volume);
+        currentSoundFile.setTime(time);
     }
 };
 
@@ -34,7 +34,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         '<tr class="album-view-song-item">'
       + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + songLength + '</td>'
+      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
       + '</tr>'
       ;
 
@@ -131,12 +131,14 @@ var setTotalTimeInPlayerBar = function(totalTime){
 };
 
 var filterTimeCode = function(timeInSeconds){
-  var seconds = Math.floor(Number.parseFloat(timeInSeconds));
+  var seconds = Number.parseFloat(timeInSeconds);
   var wholeSeconds = Math.floor(seconds);
   var minutes = Math.floor(wholeSeconds / 60);
     
   var remainingSeconds = wholeSeconds % 60;
   var output = minutes + ':' ;
+    console.log('timeInSeconds:', timeInSeconds);
+    console.log(seconds, wholeSeconds, minutes, remainingSeconds);
     
    if (remainingSeconds < 10) {
         output += '0';   
@@ -178,10 +180,10 @@ var filterTimeCode = function(timeInSeconds){
          var offsetX = event.pageX - $(this).offset().left;
          var barWidth = $(this).width();
          var seekBarFillRatio = offsetX / barWidth;
-          if ($seekBar.parent().attr('class') == 'seek-control') {
+          if ($(this).parent().attr('class') == 'seek-control') {
                 seek(seekBarFillRatio * currentSoundFile.getDuration());   
             } else {
-                setVolume(seekBarFillRatio);
+                setVolume(seekBarFillRatio * 100);
             }
         updateSeekPercentage($(this), seekBarFillRatio);
 });
@@ -217,7 +219,7 @@ var updatePlayerBarSong = function() {
     
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
-    setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.length));
+    setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.duration));
 };
 
 var trackIndex = function(album, song) {
