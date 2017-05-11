@@ -49,6 +49,7 @@ var clickHandler = function() {
         }
         if (currentlyPlayingSongNumber !== songNumber) {
             setSong(songNumber);
+            $(this).html(pauseButtonTemplate);
             currentSoundFile.play();
             updateSeekBarWhileSongPlays();
             currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
@@ -58,13 +59,13 @@ var clickHandler = function() {
             $volumeFill.width(currentVolume + '%');
             $volumeThumb.css({left: currentVolume + '%'});
             
-            $(this).html(pauseButtonTemplate);
             updatePlayerBarSong();
         } 
         else if (currentlyPlayingSongNumber === songNumber){
             if (currentSoundFile.isPaused()) {
                 $(this).html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
+                updateSeekBarWhileSongPlays();
                 currentSoundFile.play();
         }
         else{
